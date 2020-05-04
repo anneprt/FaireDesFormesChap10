@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ListeDeFormes {
@@ -24,6 +25,18 @@ public class ListeDeFormes {
             for (Forme tmp : listeFormes) tmp.afficher();
         } else {
             System.out.print("Il n'y a pas de forme dans cette liste ");
+        }
+    }
+
+    public void enregistrerLesFormes(Fichier f) throws IOException {
+        int nbFormes = listeFormes.size();
+        if (nbFormes > 0) {
+            String chaine = "";
+            for (Forme tmp : listeFormes) {
+                tmp.afficher();
+                chaine = tmp.getInfos();
+                if (chaine != null) f.ecrire(chaine);
+            }
         }
     }
 }

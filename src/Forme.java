@@ -1,21 +1,21 @@
 import java.util.Scanner;
 
 public class Forme {
-    public final static int largeurEcran = 800;
-    public final static int hauteurEcran = 600;
-    public final static int couleurMax = 10;
+    public final static int LARGEUR_ECRAN = 800;
+    public final static int HAUTEUR_ECRAN = 600;
+    public final static int COULEUR_MAX = 10;
     protected int x, y, couleur;
 
     public Forme(int nx, int ny, int nc) {
-        x = verifier(nx, 0, largeurEcran);
-        y = verifier(ny, 0, hauteurEcran);
-        couleur = verifier(nc, 0, couleurMax);
+        x = verifier(nx, 0, LARGEUR_ECRAN);
+        y = verifier(ny, 0, HAUTEUR_ECRAN);
+        couleur = verifier(nc, 0, COULEUR_MAX);
     }
 
     public Forme() {
-        x = verifier("en X", 0, largeurEcran);
-        y = verifier("en Y", 0, hauteurEcran);
-        couleur = verifier("couleur", 0, couleurMax);
+        x = verifier("en X", 0, LARGEUR_ECRAN);
+        y = verifier("en Y", 0, HAUTEUR_ECRAN);
+        couleur = verifier("couleur", 0, COULEUR_MAX);
         ;
     }
 
@@ -43,11 +43,15 @@ public class Forme {
 
 
     public void deplacer(int nx, int ny) {
-        x = verifier(x + nx, 0, largeurEcran);
-        y = verifier(y + ny, 0, hauteurEcran);
+        x = verifier(x + nx, 0, LARGEUR_ECRAN);
+        y = verifier(y + ny, 0, HAUTEUR_ECRAN);
     }
 
     public void colorier(int nc) {
-        couleur = verifier(nc, 0, couleurMax);
+        couleur = verifier(nc, 0, COULEUR_MAX);
+    }
+
+    public String getInfos() {
+        return couleur + ";" + x + ";" + y;
     }
 }

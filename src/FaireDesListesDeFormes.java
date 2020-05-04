@@ -1,9 +1,15 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FaireDesListesDeFormes {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner lectureClavier = new Scanner(System.in);
         ListeDeFormes LdF = new ListeDeFormes();
+        Fichier f = new Fichier();
+        if (f.ouvrir("Formes.txt", "Lecture")) {
+            LdF.lireLesFormes(f);
+            f.fermer();
+        }
         byte choix = 0;
         do {
             System.out.println("1. Ajouter un cercle");
@@ -30,6 +36,11 @@ public class FaireDesListesDeFormes {
                 case 4:
                     LdF.afficherLesFormes();
                     break;
+                case 5:
+                    f.ouvrir("Formes.txt", "Ecriture");
+                    LdF.enregistrerLesFormes(f);
+                    f.fermer();
+                    System.exit(0);
                 default:
                     System.out.println("Cette option n'existe pas");
             }

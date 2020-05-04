@@ -39,4 +39,42 @@ public class ListeDeFormes {
             }
         }
     }
+
+    public void lireLesFormes(Fichier f) throws IOException {
+
+        String chaine;
+        String[] mot = {"", "", "", "", "", "", "", ""};
+        char tt;
+        int cc, xx0, yy0, xx1, yy1, xx2, yy2, ll, hh, rr;
+        do {
+            mot = f.lire();
+            if (mot != null) {
+                tt = mot[0].charAt(0);
+                if (tt == 'C') {
+                    cc = Integer.parseInt(mot[1]);
+                    xx0 = Integer.parseInt(mot[2]);
+                    yy0 = Integer.parseInt(mot[3]);
+                    rr = Integer.parseInt(mot[4]);
+                    listeFormes.add(new Cercle(xx0, yy0, rr, cc));
+                } else if (tt == 'T') {
+                    cc = Integer.parseInt(mot[1]);
+                    xx0 = Integer.parseInt(mot[2]);
+                    yy0 = Integer.parseInt(mot[3]);
+                    xx1 = Integer.parseInt(mot[4]);
+                    yy1 = Integer.parseInt(mot[5]);
+                    xx2 = Integer.parseInt(mot[6]);
+                    yy2 = Integer.parseInt(mot[7]);
+                    listeFormes.add(new Triangle(xx0, yy0, xx1, yy1, xx2, yy2, cc));
+                } else if (tt == 'R') {
+                    cc = Integer.parseInt(mot[1]);
+                    xx0 = Integer.parseInt(mot[2]);
+                    yy0 = Integer.parseInt(mot[3]);
+                    ll = Integer.parseInt(mot[4]);
+                    hh = Integer.parseInt(mot[5]);
+                    listeFormes.add(new Rectangle(xx0, yy0, ll, hh, cc));
+
+                }
+            }
+        } while (mot != null);
+    }
 }
